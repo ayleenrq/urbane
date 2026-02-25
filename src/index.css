@@ -4,13 +4,9 @@
   --color-primary: #000000;
   --color-primary-hover: #333333;
   --color-background-light: #FFFFFF;
-  --color-background-dark: #121212;
   --color-surface-light: #F3F4F6;
-  --color-surface-dark: #1E1E1E;
   --color-text-light: #1F2937;
-  --color-text-dark: #F3F4F6;
   --color-border-light: #E5E7EB;
-  --color-border-dark: #374151;
 
   --font-sans: "Montserrat", sans-serif;
   --font-display: "Montserrat", sans-serif;
@@ -32,10 +28,6 @@
 ::-webkit-scrollbar-thumb {
   background: #d1d5db;
   border-radius: 4px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #4b5563;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

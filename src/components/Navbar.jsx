@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { useAppContext } from "../context/AppContext";
 import AuthModal from "./AuthModal";
 
 const NAV_LINKS = ["Home", "Services", "Properties", "About Us", "Blog"];
@@ -9,7 +8,7 @@ const NAV_LINKS = ["Home", "Services", "Properties", "About Us", "Blog"];
 const SECTION_IDS = ["hero", "services", "properties", "testimonials", "map"];
 
 const Navbar = () => {
-    const { darkMode, toggleDarkMode } = useAppContext();
+
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("hero");
@@ -94,7 +93,7 @@ const Navbar = () => {
         <>
             <nav
                 ref={navRef}
-                className={`sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-border-light dark:border-border-dark transition-shadow duration-300 ${scrolled ? "shadow-lg" : ""
+                className={`sticky top-0 z-50 bg-background-light/90 backdrop-blur-md border-b border-border-light transition-shadow duration-300 ${scrolled ? "shadow-lg" : ""
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,7 +108,7 @@ const Navbar = () => {
                         </button>
 
                         {/* Desktop Nav */}
-                        <div className="hidden md:flex space-x-1 bg-surface-light dark:bg-surface-dark rounded-full px-2 py-1 items-center">
+                        <div className="hidden md:flex space-x-1 bg-surface-light rounded-full px-2 py-1 items-center">
                             {NAV_LINKS.map((link, i) => {
                                 const sectionId = SECTION_IDS[i] ?? "hero";
                                 const isActive = activeSection === sectionId;
@@ -119,8 +118,8 @@ const Navbar = () => {
                                         key={link}
                                         onClick={() => scrollTo(sectionId)}
                                         className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive
-                                            ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
-                                            : "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-white dark:hover:bg-gray-700"
+                                            ? "bg-black text-white shadow-sm"
+                                            : "text-gray-500 hover:text-black:text-white hover:bg-white:bg-gray-700"
                                             }`}
                                     >
                                         {link}
@@ -139,19 +138,9 @@ const Navbar = () => {
 
                         {/* Right Actions */}
                         <div className="flex items-center space-x-3">
-                            {/* Dark Mode Toggle */}
-                            <button
-                                onClick={toggleDarkMode}
-                                title={darkMode ? "Light mode" : "Dark mode"}
-                                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-light dark:hover:bg-surface-dark transition-colors"
-                            >
-                                <span className="material-icons-outlined" style={{ fontSize: "20px", lineHeight: 1 }}>
-                                    {darkMode ? "light_mode" : "dark_mode"}
-                                </span>
-                            </button>
 
                             <button
-                                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-light dark:hover:bg-surface-dark transition-colors"
+                                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-light transition-colors"
                                 title="Language"
                             >
                                 <span className="material-icons-outlined" style={{ fontSize: "20px", lineHeight: 1 }}>language</span>
@@ -169,7 +158,7 @@ const Navbar = () => {
 
                             {/* Mobile Hamburger */}
                             <button
-                                className="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-light dark:hover:bg-surface-dark transition-colors"
+                                className="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-light transition-colors"
                                 onClick={() => setMobileOpen((o) => !o)}
                                 aria-label="Toggle menu"
                             >
@@ -191,8 +180,8 @@ const Navbar = () => {
                                         key={link}
                                         onClick={() => scrollTo(sectionId)}
                                         className={`text-left px-4 py-2.5 rounded-full text-sm font-medium transition-colors ${isActive
-                                            ? "bg-black text-white dark:bg-white dark:text-black"
-                                            : "hover:bg-surface-light dark:hover:bg-surface-dark"
+                                            ? "bg-black text-white"
+                                            : "hover:bg-surface-light:bg-surface-dark"
                                             }`}
                                     >
                                         {link}

@@ -96,7 +96,7 @@ const PropertyGrid = () => {
                 <h2 className="text-4xl font-semibold mb-4">
                     Discover Best Properties Tailored to You
                 </h2>
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500">
                     Explore our curated listings this month, with options for every lifestyle.
                 </p>
             </div>
@@ -121,26 +121,26 @@ const PropertyGrid = () => {
                         <div key={listing.id}>
                             <FeaturedListing {...listing} />
                             {i < FEATURED_LISTINGS.length - 1 && (
-                                <div className="border-t border-gray-100 dark:border-gray-800 my-2" />
+                                <div className="border-t border-gray-100 my-2" />
                             )}
                         </div>
                     ))}
 
                     {/* Sort Bar */}
-                    <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-800 mb-6">
+                    <div className="flex justify-between items-center pb-4 border-b border-gray-100 mb-6">
                         <div className="flex items-center text-sm font-medium cursor-pointer hover:opacity-70">
                             Sort by: Price <span className="material-icons-outlined text-sm ml-1">expand_more</span>
                         </div>
                         <div className="flex items-center space-x-2">
                             <button
                                 onClick={() => setGridView(true)}
-                                className={`p-1.5 rounded-lg transition-colors ${gridView ? "text-black dark:text-white bg-gray-100 dark:bg-gray-800" : "text-gray-400"} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                className={`p-1.5 rounded-lg transition-colors ${gridView ? "text-black bg-gray-100" : "text-gray-400"} hover:bg-gray-100:bg-gray-800`}
                             >
                                 <span className="material-icons-outlined">grid_view</span>
                             </button>
                             <button
                                 onClick={() => setGridView(false)}
-                                className={`p-1.5 rounded-lg transition-colors ${!gridView ? "text-black dark:text-white bg-gray-100 dark:bg-gray-800" : "text-gray-400"} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                className={`p-1.5 rounded-lg transition-colors ${!gridView ? "text-black bg-gray-100" : "text-gray-400"} hover:bg-gray-100:bg-gray-800`}
                             >
                                 <span className="material-icons-outlined">view_list</span>
                             </button>
@@ -213,9 +213,9 @@ const Sidebar = ({ activeBedroom, setActiveBedroom, longTerm, setLongTerm, short
                     className="w-full h-1 bg-gray-200 appearance-none rounded-full accent-black cursor-pointer"
                 />
                 <div className="flex justify-between mt-3">
-                    <div className="bg-surface-light dark:bg-surface-dark px-4 py-2 rounded-full text-sm font-medium">$140</div>
+                    <div className="bg-surface-light px-4 py-2 rounded-full text-sm font-medium">$140</div>
                     <span className="self-center text-gray-400 text-xs">To</span>
-                    <div className="bg-surface-light dark:bg-surface-dark px-4 py-2 rounded-full text-sm font-medium">$500</div>
+                    <div className="bg-surface-light px-4 py-2 rounded-full text-sm font-medium">$500</div>
                 </div>
             </div>
 
@@ -232,14 +232,14 @@ const Sidebar = ({ activeBedroom, setActiveBedroom, longTerm, setLongTerm, short
             {/* Bedrooms */}
             <div>
                 <h3 className="font-bold mb-4 text-sm">Bedrooms</h3>
-                <div className="flex bg-surface-light dark:bg-surface-dark rounded-2xl p-1">
+                <div className="flex bg-surface-light rounded-2xl p-1">
                     {["1", "2", "3", "4", "5+"].map((n) => (
                         <button
                             key={n}
                             onClick={() => setActiveBedroom(n)}
                             className={`flex-1 py-1.5 text-xs font-medium rounded-full transition-all ${activeBedroom === n
-                                ? "bg-white dark:bg-black shadow-sm font-bold"
-                                : "text-gray-500 hover:text-black dark:hover:text-white"
+                                ? "bg-white shadow-sm font-bold"
+                                : "text-gray-500 hover:text-black:text-white"
                                 }`}
                         >
                             {n}
@@ -255,14 +255,14 @@ const Sidebar = ({ activeBedroom, setActiveBedroom, longTerm, setLongTerm, short
 const SidebarTabs = () => {
     const [active, setActive] = useState("Rent");
     return (
-        <div className="flex p-1 bg-surface-light dark:bg-surface-dark rounded-2xl">
+        <div className="flex p-1 bg-surface-light rounded-2xl">
             {["Buy", "Sell", "Rent"].map((t) => (
                 <button
                     key={t}
                     onClick={() => setActive(t)}
                     className={`flex-1 py-2 text-xs font-medium rounded-full transition-all ${active === t
-                        ? "bg-black text-white shadow-sm dark:bg-white dark:text-black"
-                        : "text-gray-500 hover:text-black dark:hover:text-white"
+                        ? "bg-black text-white shadow-sm"
+                        : "text-gray-500 hover:text-black:text-white"
                         }`}
                 >
                     {t}
@@ -278,8 +278,8 @@ const AmenityChip = ({ label, defaultChecked }) => {
         <button
             onClick={() => setChecked((c) => !c)}
             className={`px-3 py-1.5 border rounded-full text-xs flex items-center gap-1 cursor-pointer transition-all ${checked
-                ? "border-black bg-black text-white dark:border-white dark:bg-white dark:text-black"
-                : "border-gray-200 dark:border-gray-700 hover:border-black dark:hover:border-white"
+                ? "border-black bg-black text-white"
+                : "border-gray-200 hover:border-black:border-white"
                 }`}
         >
             {label}
@@ -304,7 +304,7 @@ const FeaturedListing = ({
     };
 
     return (
-        <div className="bg-white dark:bg-background-dark overflow-hidden mb-8 property-card">
+        <div className="bg-white overflow-hidden mb-8 property-card">
             {/* Image gallery: 1 large left + 2×2 grid right */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="h-64 md:h-80 rounded-2xl overflow-hidden">
@@ -341,7 +341,7 @@ const FeaturedListing = ({
                 </div>
 
                 {/* Price + Stats row */}
-                <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-6">
+                <div className="flex items-center justify-between border-t border-gray-100 pt-6">
                     <div>
                         <div className="flex items-end gap-1 mb-1">
                             <span className="text-3xl font-bold">{price}</span>
@@ -378,7 +378,7 @@ const FeaturedListing = ({
 
                 {/* Agent + CTA */}
                 <div className="flex items-center justify-between mt-6">
-                    <div className="flex items-center space-x-3 bg-surface-light dark:bg-surface-dark pr-4 py-1.5 rounded-full pl-1.5">
+                    <div className="flex items-center space-x-3 bg-surface-light pr-4 py-1.5 rounded-full pl-1.5">
                         <img className="w-8 h-8 rounded-full object-cover" src={agentImg} alt={agentName} />
                         <span className="text-xs font-bold">Agent: {agentName}</span>
                     </div>
@@ -407,7 +407,7 @@ const PropertyCard = ({ image, title, description, price }) => {
                 <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src={image} alt={title} />
                 <button
                     onClick={(e) => { e.stopPropagation(); setLiked((l) => !l); }}
-                    className={`absolute top-3 right-3 w-9 h-9 flex items-center justify-center bg-white dark:bg-black rounded-full shadow-md transition-all hover:scale-110 active:scale-95 ${liked ? "text-red-500" : ""}`}
+                    className={`absolute top-3 right-3 w-9 h-9 flex items-center justify-center bg-white rounded-full shadow-md transition-all hover:scale-110 active:scale-95 ${liked ? "text-red-500" : ""}`}
                 >
                     <span className="material-icons-outlined" style={{ fontSize: '18px', lineHeight: 1 }}>{liked ? "favorite" : "favorite_border"}</span>
                 </button>
@@ -415,7 +415,7 @@ const PropertyCard = ({ image, title, description, price }) => {
             <h3 className="text-lg font-bold mb-1">{title}</h3>
             <p className="text-xs text-gray-500 mb-3 line-clamp-2">{description}</p>
             <div className="flex justify-between items-center mt-3">
-                <span className="text-sm font-bold text-gray-900 dark:text-gray-100">{price}</span>
+                <span className="text-sm font-bold text-gray-900">{price}</span>
                 <button
                     onClick={() => alert(`Booking ${title}\u2026`)}
                     className="group/btn flex items-center gap-2 border border-gray-200 hover:bg-black hover:border-black hover:text-white pl-5 pr-2 py-2 rounded-full text-sm font-semibold transition-all duration-200 active:scale-95"
@@ -440,7 +440,7 @@ const PropertyCardFeatured = ({ image, title, description, price }) => {
                 <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src={image} alt={title} />
                 <button
                     onClick={(e) => { e.stopPropagation(); setLiked((l) => !l); }}
-                    className={`absolute top-3 right-3 w-9 h-9 flex items-center justify-center bg-white dark:bg-black rounded-full shadow-md transition-all hover:scale-110 active:scale-95 ${liked ? "text-red-500" : ""}`}
+                    className={`absolute top-3 right-3 w-9 h-9 flex items-center justify-center bg-white rounded-full shadow-md transition-all hover:scale-110 active:scale-95 ${liked ? "text-red-500" : ""}`}
                 >
                     <span className="material-icons-outlined" style={{ fontSize: '18px', lineHeight: 1 }}>{liked ? "favorite" : "favorite_border"}</span>
                 </button>
@@ -448,7 +448,7 @@ const PropertyCardFeatured = ({ image, title, description, price }) => {
             <h3 className="text-lg font-bold mb-1">{title}</h3>
             <p className="text-xs text-gray-500 mb-3 line-clamp-2">{description}</p>
             <div className="flex justify-between items-center mt-3">
-                <span className="text-sm font-bold text-gray-900 dark:text-gray-100">{price}</span>
+                <span className="text-sm font-bold text-gray-900">{price}</span>
                 <button
                     onClick={() => alert(`Booking ${title}\u2026`)}
                     className="group/btn flex items-center gap-2 border border-gray-200 hover:bg-black hover:border-black hover:text-white pl-5 pr-2 py-2 rounded-full text-sm font-semibold transition-all duration-200 active:scale-95"
@@ -472,7 +472,7 @@ const Pagination = ({ current, total, onChange }) => {
                 <button
                     onClick={() => onChange(Math.max(1, current - 1))}
                     disabled={current === 1}
-                    className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed active:scale-90 transition-all"
+                    className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed active:scale-90 transition-all"
                     aria-label="Previous page"
                 >
                     <span className="material-icons-outlined" style={{ fontSize: '18px', lineHeight: 1 }}>chevron_left</span>
@@ -484,8 +484,8 @@ const Pagination = ({ current, total, onChange }) => {
                         key={n}
                         onClick={() => onChange(n)}
                         className={`w-8 h-8 flex items-center justify-center text-xs rounded-full font-semibold transition-all active:scale-90 ${current === n
-                            ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
-                            : "text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white"
+                            ? "bg-black text-white shadow-sm"
+                            : "text-gray-400 hover:bg-gray-100:bg-gray-800 hover:text-black:text-white"
                             }`}
                     >
                         {n}
@@ -496,7 +496,7 @@ const Pagination = ({ current, total, onChange }) => {
                 <button
                     onClick={() => onChange(Math.min(total, current + 1))}
                     disabled={current === total}
-                    className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed active:scale-90 transition-all"
+                    className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed active:scale-90 transition-all"
                     aria-label="Next page"
                 >
                     <span className="material-icons-outlined" style={{ fontSize: '18px', lineHeight: 1 }}>chevron_right</span>

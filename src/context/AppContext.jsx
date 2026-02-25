@@ -12,19 +12,6 @@ export function AppProvider({ children }) {
         rooms: "",
     });
     const [activeFilter, setActiveFilter] = useState("All");
-    const [darkMode, setDarkMode] = useState(false);
-
-    const toggleDarkMode = () => {
-        setDarkMode((prev) => {
-            const next = !prev;
-            if (next) {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-            }
-            return next;
-        });
-    };
 
     return (
         <AppContext.Provider
@@ -37,8 +24,6 @@ export function AppProvider({ children }) {
                 setSearchValues,
                 activeFilter,
                 setActiveFilter,
-                darkMode,
-                toggleDarkMode,
             }}
         >
             {children}

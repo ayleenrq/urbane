@@ -61,18 +61,18 @@ const Stars = ({ count = 5 }) => (
 /* ── Single review card ── */
 const ReviewCard = ({ text, name, role, avatar, rating }) => (
     <div
-        className="flex-shrink-0 w-[340px] bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl p-7 mx-3 select-none"
+        className="flex-shrink-0 w-[340px] bg-white border border-gray-100 rounded-3xl p-7 mx-3 select-none"
         style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.06)" }}
     >
         <Stars count={rating} />
-        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+        <p className="text-sm text-gray-600 leading-relaxed mb-6">
             &ldquo;{text}&rdquo;
         </p>
         <div className="flex items-center gap-3">
             <img
                 src={avatar}
                 alt={name}
-                className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100 dark:ring-gray-700 flex-shrink-0"
+                className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100 flex-shrink-0"
             />
             <div>
                 <p className="text-sm font-bold leading-tight">{name}</p>
@@ -159,17 +159,17 @@ const TestimonialCarousel = () => {
     const headerRef = useGsapReveal({ y: 30, stagger: 0.08 });
 
     return (
-        <section className="py-20 overflow-hidden bg-surface-light dark:bg-surface-dark">
+        <section className="py-20 overflow-hidden bg-surface-light">
             {/* Header */}
             <div ref={headerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
-                <span className="inline-flex items-center gap-1.5 bg-black/5 dark:bg-white/10 text-xs font-semibold px-4 py-1.5 rounded-full mb-5">
+                <span className="inline-flex items-center gap-1.5 bg-black/5 text-xs font-semibold px-4 py-1.5 rounded-full mb-5">
                     <span className="material-icons-outlined" style={{ fontSize: "13px", lineHeight: 1 }}>format_quote</span>
                     Client Stories
                 </span>
                 <h2 className="text-4xl md:text-5xl font-semibold mb-4">
                     Loved by Thousands
                 </h2>
-                <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
+                <p className="text-gray-500 max-w-md mx-auto">
                     Real stories from homebuyers, sellers, and investors who found their perfect property with Urbane.
                 </p>
             </div>
@@ -183,8 +183,8 @@ const TestimonialCarousel = () => {
             <MarqueeRow items={[...REVIEWS.slice(3), ...REVIEWS.slice(0, 3)]} reversed={true} speed={32} />
 
             {/* Edge fades */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface-light dark:from-surface-dark to-transparent z-10" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface-light dark:from-surface-dark to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface-light to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface-light to-transparent z-10" />
         </section>
     );
 };

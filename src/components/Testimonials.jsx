@@ -42,7 +42,7 @@ const Testimonials = () => {
                                 "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&q=80",
                                 "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&q=80",
                             ].map((src, i) => (
-                                <img key={i} alt="Client" className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-background-dark object-cover" src={src} />
+                                <img key={i} alt="Client" className="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover" src={src} />
                             ))}
                         </div>
                         <p className="text-sm text-gray-500 max-w-xs">
@@ -53,7 +53,7 @@ const Testimonials = () => {
                 <a
                     href="#"
                     onClick={(e) => { e.preventDefault(); alert("Loading more stories\u2026"); }}
-                    className="bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 pl-5 pr-2 py-2 rounded-full text-sm font-bold flex items-center gap-3 transition-colors active:scale-95 whitespace-nowrap"
+                    className="bg-surface-light hover:bg-gray-200:bg-gray-700 pl-5 pr-2 py-2 rounded-full text-sm font-bold flex items-center gap-3 transition-colors active:scale-95 whitespace-nowrap"
                 >
                     Show More
                     <span className="w-7 h-7 flex items-center justify-center bg-black text-white rounded-full flex-shrink-0">
@@ -64,7 +64,7 @@ const Testimonials = () => {
 
             {/* Stats + Hero Quote */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div ref={statsRef} className="lg:col-span-3 bg-surface-light dark:bg-surface-dark p-8 rounded-3xl flex flex-col justify-between">
+                <div ref={statsRef} className="lg:col-span-3 bg-surface-light p-8 rounded-3xl flex flex-col justify-between">
                     <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Facts &amp; Numbers</span>
                     <div className="flex flex-col gap-6 mt-8">
                         <StatCounter target={94} suffix="%" label="of clients recommend Urbane" />
@@ -104,10 +104,10 @@ const TestimonialCard = ({ text, name, role, avatar, dark }) => (
     <div
         className={`testimonial-card p-8 rounded-3xl flex flex-col justify-between hover:shadow-xl transition-shadow duration-300 cursor-default ${dark
             ? "bg-black text-white"
-            : "bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700"
+            : "bg-white border border-gray-100"
             }`}
     >
-        <p className={`text-base leading-relaxed mb-6 ${dark ? "text-white" : "text-gray-600 dark:text-gray-300"}`}>
+        <p className={`text-base leading-relaxed mb-6 ${dark ? "text-white" : "text-gray-600"}`}>
             {text}
         </p>
         <div className="flex items-center space-x-3">
@@ -128,7 +128,7 @@ const StatCounter = ({ target, suffix = "", label, shorthand = null, decimals = 
         return (
             <div ref={ref}>
                 <p className="text-4xl font-light mb-1">{shorthand}{suffix}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{label}</p>
+                <p className="text-xs text-gray-500">{label}</p>
             </div>
         );
     }
@@ -142,7 +142,7 @@ const StatCounter = ({ target, suffix = "", label, shorthand = null, decimals = 
     return (
         <div>
             <p ref={numRef} className="text-4xl font-light mb-1">0{suffix}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">{label}</p>
+            <p className="text-xs text-gray-500">{label}</p>
         </div>
     );
 };

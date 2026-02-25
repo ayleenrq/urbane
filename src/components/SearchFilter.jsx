@@ -27,17 +27,17 @@ const SearchFilter = () => {
         <section id="search" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
             <div
                 ref={containerRef}
-                className="bg-surface-light dark:bg-surface-dark rounded-3xl p-6 shadow-sm border border-border-light dark:border-border-dark"
+                className="bg-surface-light rounded-3xl p-6 shadow-sm border border-border-light"
             >
                 {/* Buy / Sell / Rent Toggle */}
-                <div className="flex space-x-2 bg-white dark:bg-black rounded-full p-1.5 w-fit border border-gray-100 dark:border-gray-800 mb-4">
+                <div className="flex space-x-2 bg-white rounded-full p-1.5 w-fit border border-gray-100 mb-4">
                     {TABS.map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === tab
                                 ? "bg-primary text-white shadow-sm scale-105"
-                                : "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                                : "text-gray-500 hover:text-black:text-white"
                                 }`}
                         >
                             {tab}
@@ -63,7 +63,7 @@ const SearchFilter = () => {
                                     <input
                                         value={formValues[key]}
                                         onChange={handleChange(key)}
-                                        className="block w-full pl-10 pr-4 py-3 border-none rounded-full bg-white dark:bg-black focus:ring-2 focus:ring-primary text-sm placeholder-gray-400 transition-shadow"
+                                        className="block w-full pl-10 pr-4 py-3 border-none rounded-full bg-white focus:ring-2 focus:ring-primary text-sm placeholder-gray-400 transition-shadow"
                                         placeholder={placeholder}
                                         type="text"
                                     />
@@ -100,8 +100,8 @@ const SearchFilter = () => {
                             key={f}
                             onClick={() => setActiveFilter(f)}
                             className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 active:scale-95 border ${activeFilter === f
-                                    ? "bg-black text-white border-black dark:bg-white dark:text-black dark:border-white"
-                                    : "border-gray-200 dark:border-gray-700 hover:border-black dark:hover:border-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                                    ? "bg-black text-white border-black"
+                                    : "border-gray-200 hover:border-black:border-white hover:bg-gray-50:bg-gray-800"
                                 }`}
                         >
                             {f}

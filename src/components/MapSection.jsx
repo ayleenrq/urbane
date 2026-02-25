@@ -101,14 +101,14 @@ const MapSection = () => {
     };
 
     return (
-        <section id="map" className="bg-surface-light dark:bg-surface-dark py-16">
+        <section id="map" className="bg-surface-light py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     {/* ── Map ── */}
                     <div
                         ref={leftRef}
-                        className="relative h-[360px] rounded-3xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800"
+                        className="relative h-[360px] rounded-3xl overflow-hidden shadow-lg border border-gray-100"
                     >
                         <MapContainer
                             center={CENTER}
@@ -170,12 +170,12 @@ const MapSection = () => {
                         </MapContainer>
 
                         {/* Attribution badge */}
-                        <div className="absolute bottom-2 right-2 z-[1000] bg-white/80 dark:bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-full text-[9px] text-gray-400 pointer-events-none">
+                        <div className="absolute bottom-2 right-2 z-[1000] bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full text-[9px] text-gray-400 pointer-events-none">
                             © OpenStreetMap · CartoDB
                         </div>
 
                         {/* Area label */}
-                        <div className="absolute top-3 left-3 z-[1000] bg-white/90 dark:bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold shadow pointer-events-none">
+                        <div className="absolute top-3 left-3 z-[1000] bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold shadow pointer-events-none">
                             <span className="material-icons-outlined align-middle mr-1" style={{ fontSize: 13 }}>location_on</span>
                             South Jakarta, ID
                         </div>
@@ -186,7 +186,7 @@ const MapSection = () => {
                         <h2 className="text-4xl font-semibold mb-4">
                             Discover Best Properties <br /> Tailored to You
                         </h2>
-                        <p className="text-gray-500 dark:text-gray-400 mb-4 max-w-md">
+                        <p className="text-gray-500 mb-4 max-w-md">
                             Browse {PROPERTIES.length} available listings in South Jakarta — from modern condos
                             to luxury villas. Click any marker on the map to explore.
                         </p>

@@ -127,7 +127,7 @@ const Hero = () => {
                             className="text-5xl md:text-6xl font-semibold leading-tight tracking-tight mb-6 opacity-0"
                         >
                             Discover Fresh
-                            <span className="inline-flex items-center justify-center w-16 h-10 rounded-full overflow-hidden align-middle mx-1 border border-gray-200 dark:border-gray-700">
+                            <span className="inline-flex items-center justify-center w-16 h-10 rounded-full overflow-hidden align-middle mx-1 border border-gray-200">
                                 <img
                                     alt="Home preview"
                                     className="w-full h-full object-cover"
@@ -148,7 +148,7 @@ const Hero = () => {
                         </h1>
                         <p
                             ref={subtitleRef}
-                            className="text-gray-500 dark:text-gray-400 text-lg mb-8 max-w-md opacity-0"
+                            className="text-gray-500 text-lg mb-8 max-w-md opacity-0"
                         >
                             Discover hand-picked properties, expert agents, and a seamless
                             journey to your perfect place.
@@ -158,7 +158,7 @@ const Hero = () => {
                     {/* Agent Card */}
                     <div
                         ref={agentRef}
-                        className="bg-surface-light dark:bg-surface-dark p-5 rounded-3xl flex items-stretch gap-4 hover:shadow-xl transition-shadow duration-300 cursor-pointer group opacity-0"
+                        className="bg-surface-light p-5 rounded-3xl flex items-stretch gap-4 hover:shadow-xl transition-shadow duration-300 cursor-pointer group opacity-0"
                         onClick={() => document.getElementById("search")?.scrollIntoView({ behavior: "smooth" })}
                     >
                         {/* House thumbnail */}
@@ -185,7 +185,7 @@ const Hero = () => {
                                     Contact With Me
                                 </button>
                                 <button
-                                    className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-110 active:scale-95 transition-all"
+                                    className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-white rounded-full shadow-sm hover:bg-gray-50:bg-gray-700 hover:scale-110 active:scale-95 transition-all"
                                     onClick={(e) => { e.stopPropagation(); alert("Opening chat…"); }}
                                     title="Chat"
                                 >
@@ -195,7 +195,7 @@ const Hero = () => {
                                     href="https://linkedin.com"
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-sm hover:scale-110 active:scale-95 transition-all"
+                                    className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-white rounded-full shadow-sm hover:scale-110 active:scale-95 transition-all"
                                     onClick={(e) => e.stopPropagation()}
                                     title="LinkedIn"
                                 >
@@ -212,7 +212,7 @@ const Hero = () => {
                 <div ref={galleryRef} className="lg:col-span-7 flex flex-col gap-4 opacity-0">
 
                     {/* Main Image — two layered imgs for slide swap */}
-                    <div className="relative rounded-3xl overflow-hidden h-[420px] w-full bg-gray-100 dark:bg-gray-800">
+                    <div className="relative rounded-3xl overflow-hidden h-[420px] w-full bg-gray-100">
                         {/* Outgoing (base) image */}
                         <img
                             ref={imgOutRef}
@@ -235,14 +235,14 @@ const Hero = () => {
                         </div>
 
                         {/* Rating Badge */}
-                        <div className="absolute top-4 right-4 z-10 bg-white dark:bg-gray-800 py-1.5 px-3 rounded-full shadow-lg flex items-center space-x-2">
+                        <div className="absolute top-4 right-4 z-10 bg-white py-1.5 px-3 rounded-full shadow-lg flex items-center space-x-2">
                             <div className="flex -space-x-2 overflow-hidden">
                                 {[
                                     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=48&h=48&fit=crop&q=80",
                                     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&q=80",
                                     "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=48&h=48&fit=crop&q=80",
                                 ].map((src, i) => (
-                                    <img key={i} alt="" className="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-gray-800 object-cover" src={src} />
+                                    <img key={i} alt="" className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src={src} />
                                 ))}
                             </div>
                             <div className="flex items-center text-xs font-bold">
@@ -255,7 +255,7 @@ const Hero = () => {
                         <button
                             onClick={() => goTo(Math.max(0, active - 1))}
                             disabled={active === 0}
-                            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/80 dark:bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center shadow hover:bg-white dark:hover:bg-black transition-colors disabled:opacity-30"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow hover:bg-white:bg-black transition-colors disabled:opacity-30"
                             aria-label="Previous"
                         >
                             <span className="material-icons-outlined text-base">chevron_left</span>
@@ -263,7 +263,7 @@ const Hero = () => {
                         <button
                             onClick={() => goTo(Math.min(SLIDES.length - 1, active + 1))}
                             disabled={active === SLIDES.length - 1}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/80 dark:bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center shadow hover:bg-white dark:hover:bg-black transition-colors disabled:opacity-30"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow hover:bg-white:bg-black transition-colors disabled:opacity-30"
                             aria-label="Next"
                         >
                             <span className="material-icons-outlined text-base">chevron_right</span>
@@ -307,7 +307,7 @@ const Hero = () => {
                                 onClick={() => goTo(n)}
                                 className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium transition-all duration-200 hover:scale-110 active:scale-95 ${active === n
                                     ? "bg-primary text-white shadow-md"
-                                    : "text-gray-400 dark:text-gray-500 hover:text-black dark:hover:text-white"
+                                    : "text-gray-400 hover:text-black:text-white"
                                     }`}
                                 aria-label={`Go to slide ${n + 1}`}
                             >
