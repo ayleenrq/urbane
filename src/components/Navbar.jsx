@@ -6,7 +6,7 @@ import AuthModal from "./AuthModal";
 const NAV_LINKS = ["Home", "Services", "Properties", "About Us", "Blog"];
 
 /* Each nav link maps to a section id */
-const SECTION_IDS = ["hero", "services", "properties", "testimonials", "map"];
+const SECTION_IDS = ["hero", "search", "properties", "testimonials", "map"];
 
 const Navbar = () => {
 
