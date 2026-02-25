@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -9,10 +10,13 @@ import Testimonials from "./components/Testimonials";
 import TestimonialCarousel from "./components/TestimonialCarousel";
 import CtaBanner from "./components/CtaBanner";
 import Footer from "./components/Footer";
+import PropertiesPage from "./pages/PropertiesPage";
+import PropertyDetailPage from "./pages/PropertyDetailPage";
 
-function App() {
+/* ── Home Page ── */
+function HomePage() {
   return (
-    <AppProvider>
+    <>
       <Navbar />
       <main>
         <Hero />
@@ -25,7 +29,21 @@ function App() {
         <CtaBanner />
       </main>
       <Footer />
-    </AppProvider>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/properties" element={<PropertiesPage />} />
+          <Route path="/properties/:id" element={<PropertyDetailPage />} />
+        </Routes>
+      </AppProvider>
+    </BrowserRouter>
   );
 }
 

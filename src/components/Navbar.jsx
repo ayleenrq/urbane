@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { useNavigate, useLocation } from "react-router-dom";
 import AuthModal from "./AuthModal";
 
 const NAV_LINKS = ["Home", "Services", "Properties", "About Us", "Blog"];
@@ -8,6 +9,10 @@ const NAV_LINKS = ["Home", "Services", "Properties", "About Us", "Blog"];
 const SECTION_IDS = ["hero", "services", "properties", "testimonials", "map"];
 
 const Navbar = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isHome = location.pathname === "/";
 
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -83,9 +88,18 @@ const Navbar = () => {
     }, [mobileOpen]);
 
     const scrollTo = (id) => {
-        setActiveSection(id);
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        if (!isHome) {
+            navigate("/");
+            // After navigation the home page mounts; let it render before scrolling
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+            }, 400);
+        } else {
+            setActiveSection(id);
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
         setMobileOpen(false);
     };
 
@@ -101,7 +115,7 @@ const Navbar = () => {
 
                         {/* Logo */}
                         <button
-                            onClick={() => { scrollTo("hero"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                            onClick={() => { navigate("/"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                             className="flex-shrink-0 text-2xl font-bold tracking-tight uppercase hover:opacity-70 transition-opacity"
                         >
                             Urbane

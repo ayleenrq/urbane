@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import { useGsapReveal } from "../hooks/useGsapReveal";
 
@@ -6,7 +7,12 @@ const TABS = ["Buy", "Sell", "Rent"];
 const FILTERS = ["All", "House", "Residential", "Apartment", "Villa"];
 
 const SearchFilter = () => {
-    const { activeTab, setActiveTab, activeFilter, setActiveFilter } = useAppContext();
+    const navigate = useNavigate();
+    const {
+        activeTab, setActiveTab,
+        activeFilter, setActiveFilter,
+    } = useAppContext();
+
     const [formValues, setFormValues] = useState({ type: "", location: "", price: "", rooms: "" });
     const [submitted, setSubmitted] = useState(false);
     const containerRef = useGsapReveal({ y: 30, duration: 0.8 });
@@ -14,13 +20,27 @@ const SearchFilter = () => {
     const handleChange = (field) => (e) =>
         setFormValues((prev) => ({ ...prev, [field]: e.target.value }));
 
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setSubmitted(true);
-        // Animate the button
-        setTimeout(() => setSubmitted(false), 2000);
-        const section = document.getElementById("properties");
-        if (section) section.scrollIntoView({ behavior: "smooth" });
+
+        // Build query params to pass to the properties page
+        const params = new URLSearchParams();
+        params.set("tab", activeTab);
+        if (activeFilter !== "All") params.set("type", activeFilter);
+        if (formValues.type) params.set("lookingFor", formValues.type);
+        if (formValues.location) params.set("location", formValues.location);
+        if (formValues.price) params.set("price", formValues.price);
+        if (formValues.rooms) params.set("rooms", formValues.rooms);
+
+        // Navigate to /properties with the filters as query params
+        setTimeout(() => {
+            navigate(`/properties?${params.toString()}`);
+        }, 400); // brief shimmer effect before navigation
     };
 
     return (
@@ -34,10 +54,10 @@ const SearchFilter = () => {
                     {TABS.map((tab) => (
                         <button
                             key={tab}
-                            onClick={() => setActiveTab(tab)}
+                            onClick={() => handleTabChange(tab)}
                             className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === tab
                                 ? "bg-primary text-white shadow-sm scale-105"
-                                : "text-gray-500 hover:text-black:text-white"
+                                : "text-gray-500 hover:text-black"
                                 }`}
                         >
                             {tab}
@@ -71,17 +91,17 @@ const SearchFilter = () => {
                             </div>
                         ))}
 
-                        {/* Submit — aligns to bottom of inputs row */}
+                        {/* Submit */}
                         <div className="flex items-end">
                             <button
                                 type="submit"
                                 className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-300 active:scale-95 ${submitted
-                                        ? "bg-green-600 text-white"
-                                        : "bg-primary hover:bg-primary-hover text-white"
+                                    ? "bg-green-600 text-white"
+                                    : "bg-primary hover:bg-primary-hover text-white"
                                     }`}
                             >
                                 {submitted ? (
-                                    <><span className="material-icons-outlined text-sm">check_circle</span> Done!</>
+                                    <><span className="material-icons-outlined text-sm">check_circle</span> Going…</>
                                 ) : (
                                     <><span className="material-icons-outlined text-sm">search</span> Find</>
                                 )}
@@ -100,8 +120,8 @@ const SearchFilter = () => {
                             key={f}
                             onClick={() => setActiveFilter(f)}
                             className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 active:scale-95 border ${activeFilter === f
-                                    ? "bg-black text-white border-black"
-                                    : "border-gray-200 hover:border-black:border-white hover:bg-gray-50:bg-gray-800"
+                                ? "bg-black text-white border-black"
+                                : "border-gray-200 hover:border-black hover:bg-gray-50"
                                 }`}
                         >
                             {f}
